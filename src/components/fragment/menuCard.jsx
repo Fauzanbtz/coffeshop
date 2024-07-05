@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const item = await axios
-  .get("https://fake-coffee-api.vercel.app/api")
+  .get("https://kohi-backend.vercel.app/api/products")
   .then((res) => res.data)
   .catch((err) => console.log(err));
 
@@ -22,17 +22,17 @@ const MenuCard = () => {
           key={item.id}
           onClick={() => handleClick(item)}
           className="flex flex-col md:h-[20rem] md:w-[16rem] w-32 h-52 bg-[#dbd4b0] rounded cursor-pointer">
-          <div className=" md:p-3 border md:h-40 h-24 rounded-md bg-white m-2">
+          <div className="flex justify-center border p-2  rounded-md m-2">
             <img
-              src={item.image_url}
+              src={item.image}
               alt="coffe"
-              className="w-full object-cover"
+              className="object-cover w-[6rem] h-[6rem] rounded-md"
             />
           </div>
           <div className="flex flex-col h-full justify-between md:p-3 p-1">
             <div>
               <h1 className="md:text-xl text-sm font-bold">{item.name}</h1>
-              <p className="text-sm mt-1 ml-1">{item.flavor_profile}</p>
+              {/* <p className="text-sm mt-1 ml-1">{item.description}</p> */}
             </div>
             <div className="flex justify-between items-center">
               <p>${item.price}</p>

@@ -10,28 +10,29 @@ const Detail = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await axios.get(`https://fake-coffee-api.vercel.app/api/${id}`);
-        console.log(response.data);
-        setItem(response.data[0]);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
+      const res = await axios(
+        `https://kohi-backend.vercel.app/api/products/${id}`
+      );
+      setItem(res.data);
+      setLoading(false);
     };
-
     fetchData();
   }, [id]);
-  
-  if (loading) return ;
+
+  if (loading) return;
 
   return (
     <>
       <NavbarMenu className="bg-[#313131]" />
-      <div className="border p-4">
-        <h1>{item.name}</h1>
-        <p>{item.description}</p>
+      <div className="flex w-1/2">
+        <img src={item.image} alt="" className="w-[40rem]" />
+        <div>
+          <h1>{item.name}</h1>
+          <p>{item.description}</p>
+        </div>
+        <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-[#C67C4E]">
+          Add to cart
+        </button>
       </div>
     </>
   );

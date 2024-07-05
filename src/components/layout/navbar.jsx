@@ -11,7 +11,7 @@ const Navbar = () => {
     setOpen(!open);
   };
   return (
-    <div className="flex justify-around items-center pt-7">
+    <div className="flex justify-around  items-center pt-7">
       <img src="../src/assets/logo.png" alt="" className="w-10" />
       <div className="md:hidden">
         <Button onClick={toggleMenu}>
@@ -27,7 +27,7 @@ const Navbar = () => {
           open ? "translate-x-0" : "translate-x-full"
         }  md:translate-x-0 md:hidden  flex-col md:flex-row font-semibold p-5`}>
         <NavButton
-          className={`flex-col md:flex font-semibold relative bg-[#77714e]  ${
+          className={`flex-col md:flex font-semibold relative bg-[#77714e] ${
             open ? "block" : "hidden"
           } md:block`}
         />

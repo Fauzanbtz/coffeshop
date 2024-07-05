@@ -1,18 +1,33 @@
-import React from 'react'
-import Button from '../element/button'
+import React from "react";
+import Button from "../element/button";
+import { Link } from "react-router-dom";
 
 const NavButton = (props) => {
-  const {className} = props
+  const { className } = props;
   return (
-    <ul className={className}>
-        <li><Button>HOME</Button></li>
-        <li><Button>ABOUT</Button></li>
-        <li><Button>MENU</Button></li>
-        <li><Button>PRODUCTS</Button></li>
-        <li><Button>NEWS</Button></li>
-        <li><Button>LOCATIONS</Button></li>
+    <ul className={`${className} flex justify-center items-center`}>
+      <li>
+        <Button>HOME</Button>
+      </li>
+      <li>
+        <Button>ABOUT</Button>
+      </li>
+      <li>
+        <Button>MENU</Button>
+      </li>
+      <li>
+        <Button>PRODUCTS</Button>
+      </li>
+      <li>
+        <Button>LOCATIONS</Button>
+      </li>
+      <Link to={"/login"}>
+        <li className="bg-[#C67C4E] p-2 rounded-lg">
+          <Button>LOGIN</Button>
+        </li>
+      </Link>
     </ul>
-  )
-}
+  );
+};
 
-export default NavButton
+export default NavButton;
