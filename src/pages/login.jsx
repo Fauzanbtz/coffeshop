@@ -12,7 +12,7 @@ const Login = () => {
         <h1 className="text-3xl text-Brown-300 my-2 font-bold">Login</h1>
         <SignIn />
         <div className="mt-2">
-        Don't have an account?{" "}
+        OJAN KONTOL{" "}
         <Link
           to="/register"
           className="underline text-Brown-300
