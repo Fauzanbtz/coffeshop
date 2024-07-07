@@ -10,9 +10,11 @@ function SignIn() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
   }
 
   const handleChange = (e) => {
+    e.preventDefault();
     setIsLogin({
         ...isLogin,
         [e.target.name]: e.target.value
