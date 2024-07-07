@@ -22,7 +22,7 @@ const Input = ({
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      className="input "
+      className="input input-bordered"
       />
     </div>
   );
