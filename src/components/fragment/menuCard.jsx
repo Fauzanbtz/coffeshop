@@ -1,8 +1,15 @@
 import React from "react";
 import Button from "../element/button";
 import axios from "axios";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+const trimDescription = (description, wordLimit) => {
+  const words = description.split(' ');
+  if (words.length > wordLimit) {
+    return words.slice(0, wordLimit).join(' ') + '...';
+  }
+  return description;
+};
 
 const item = await axios
   .get("https://kohi-backend.vercel.app/api/products")
@@ -16,7 +23,7 @@ const MenuCard = () => {
     navigate(`/detail/${item.id}`);
   };
   return (
-    <div className="flex flex-wrap items-center gap-10 carousel-item overflow-auto mx-10 justify-center">
+    <div className="flex flex-wrap items-center gap-10 carousel-item overflow-auto mx-10 justify-center mt-5">
       {item.map((item) => (
         <div
           key={item.id}
@@ -26,12 +33,12 @@ const MenuCard = () => {
             <img
               src={item.image}
               alt="coffe"
-              className="object-cover w-[6rem] h-[6rem] rounded-md"
+              className="object-cover w-[6rem] h-[6rem] md:w-[14rem] md:h-[10rem] rounded-md"
             />
           </div>
           <div className="flex flex-col h-full justify-between md:p-3 p-1">
             <div>
-              <h1 className="md:text-xl text-sm font-bold">{item.name}</h1>
+              <h1 className="md:text-xl text-sm font-bold">{trimDescription(item.name, 2)}</h1>
               {/* <p className="text-sm mt-1 ml-1">{item.description}</p> */}
             </div>
             <div className="flex justify-between items-center">

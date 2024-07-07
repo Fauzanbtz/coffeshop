@@ -2,7 +2,14 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "Brown-100": "#F8F4E1",
+        "Brown-300": "#AF8F6F",
+        "Brown-500": "#74512D",
+        "Brown-800": "#543310"
+      }
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {

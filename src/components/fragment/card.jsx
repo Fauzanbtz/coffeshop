@@ -1,50 +1,34 @@
 import React from "react";
 import Button from "../element/button";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
+const trimDescription = (description, wordLimit) => {
+  const words = description.split(" ");
+  if (words.length > wordLimit) {
+    return words.slice(0, wordLimit).join(" ") + "...";
+  }
+  return description;
+};
 const Card = () => {
-  const item = [
-    {
-      id: 1,
-      image:
-        "https://i.pinimg.com/564x/2e/e8/12/2ee8124cf986d29f499202fac499698f.jpg",
-      name: "Cappucino",
-      description:
-        "orem ipsum dolor sit amet, consectetur adipiscing elit. Massa, fermentum id id vitae, integer fermentum tellus. In vitae id nisl quis ornare diam commodo in vel dolor",
-      price: "$5.00",
-    },
-    {
-      id: 2,
-      image:
-        "https://i.pinimg.com/564x/2e/e8/12/2ee8124cf986d29f499202fac499698f.jpg",
-      name: "Cappucino",
-      description:
-        "orem ipsum dolor sit amet, consectetur adipiscing elit. Massa, fermentum id id vitae, integer fermentum tellus. In vitae id nisl quis ornare diam commodo in vel dolor",
-      price: "$5.00",
-    },
-    {
-      id: 3,
-      image:
-        "https://i.pinimg.com/564x/2e/e8/12/2ee8124cf986d29f499202fac499698f.jpg",
-      name: "Cappucino",
-      description:
-        "orem ipsum dolor sit amet, consectetur adipiscing elit. Massa, fermentum id id vitae, integer fermentum tellus. In vitae id nisl quis ornare diam commodo in vel dolor",
-      price: "$5.00",
-    },
+  const [items, setItems] = useState([]);
 
-    {
-      id: 4,
-      image:
-        "https://i.pinimg.com/564x/2e/e8/12/2ee8124cf986d29f499202fac499698f.jpg",
-      name: "Cappucino",
-      description:
-        "orem ipsum dolor sit amet, consectetur adipiscing elit. Massa, fermentum id id vitae, integer fermentum tellus. In vitae id nisl quis ornare diam commodo in vel dolor",
-      price: "$5.00",
-    },
-  ];
+  useEffect(() => {
+    axios
+      .get("https://kohi-backend.vercel.app/api/products")
+      .then((response) => {
+        setItems(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
   return (
-    <div className="flex justify-center items-center gap-10 carousel-item">
-      {item.map((item) => (
-        <div key={item.id} className="flex gap-4 flex-col h-[27rem] w-[16rem] bg-[#F8F4E1] rounded-xl ">
+    <div className="flex items-center gap-10 carousel">
+      {items.map((item) => (
+        <div
+          key={item.id}
+          className="flex gap-4 flex-col h-[27rem] w-[16rem] bg-[#F8F4E1] rounded-xl carousel-item">
           <img
             src={item.image}
             alt="coffe"
@@ -52,9 +36,9 @@ const Card = () => {
           />
           <div className="flex flex-col h-full justify-between p-3">
             <h1 className="text-xl font-bold">{item.name}</h1>
-            <p>{item.description}</p>
+            <p>{trimDescription(item.description, 10)}</p>
             <div className="flex justify-between items-center">
-              <p>{item.price}</p>
+              <p>${item.price}</p>
               <Button className="bg-[#AF8F6F] w-32 h-10 rounded-xl">
                 ADD TO CART
               </Button>

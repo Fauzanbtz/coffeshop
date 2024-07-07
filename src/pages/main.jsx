@@ -47,7 +47,7 @@ const Main = () => {
         </div>
       </div>
       {/* menu */}
-      <div className="w-full h-[40rem] bg-[#74512D] flex md:justify-center carousel carousel-center">
+      <div className="w-full h-[40rem] bg-[#74512D] flex md:justify-center">
         <Card />
       </div>
       {/* review */}
