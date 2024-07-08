@@ -22,7 +22,6 @@ const Menu = () => {
   return (
     <>
       <div className="w-full h-[10rem] md:h-[20rem] bg-[#313131] mb-20 md:mb-32">
-        <NavbarMenu />
         <div className=" rounded-xl m-7 ">
           <img
             src="../src/assets/promo.png"
