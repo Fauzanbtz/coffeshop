@@ -37,9 +37,9 @@ const CardReview = () => {
   ];
 
   return (
-    <div className="flex justify-center items-center gap-10 carousel-item">
+    <div className="flex justify-center items-center  gap-10 carousel-item">
       {items.map((item) => (
-        <div key={item.id} className="flex gap-4 flex-col h-[18rem] w-[16rem] bg-[#F8F4E1] rounded-xl items-center text-center">
+        <div key={item.id} className="flex gap-7 w-80 shadow rounded-md border-Brown-500 bg-Brown-800  flex-col p-4 items-center ">
           <div className="flex justify-center pt-2">
             <img
               className="w-20 h-20 object-cover rounded-full border-2 border-white"
@@ -47,16 +47,13 @@ const CardReview = () => {
               alt="profile"
             />
           </div>
-          <div className="text-center mt-2">
-            <div className="text-yellow-500">
-              {[...Array(5)].map((_, i) => (
-                <span key={i}>★</span>
-              ))}
-            </div>
-            <h2 className="text-xl font-semibold text-gray-800">{item.judul}</h2>
-            <p className="mt-2 text-gray-600">{item.keterangan}</p>
-            <div className="mt-3 text-green-600 font-medium">{item.name}</div>
-            <div className="mt-1 text-gray-500 text-sm">{item.waktu}</div>
+          <div className=" mt-2">
+            <h2 className="text-xl text-center font-semibold text-Brown-100">{item.judul}</h2>
+            <p className="mt-2 text-Brown-100 text-center">{item.keterangan}</p>
+           <div className="flex justify-between mt-3">
+           <p className=" font-medium text-Brown-100 text-right">Rating 9/10</p>
+           <div className="font-medium text-Brown-100 text-right">-{item.name}</div>
+           </div>
           </div>
         </div>
       ))}

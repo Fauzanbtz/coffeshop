@@ -4,7 +4,7 @@ const Button = (props) => {
   const { type, children, onClick, className } = props;
   return (
     <button
-      className={`${className} `}
+      className={`${className} flex justify-center items-start`}
       onClick={onClick}
       type={type}
       >
