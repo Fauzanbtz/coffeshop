@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import Input from "../element/Input";
-import Button from "../element/button";
 import axios from "axios";
-function SignIn() {
+import React from "react";
+
+const SignInAdmin = () => {
   const [isLogin, setIsLogin] = useState({
     email: "",
     password: "",
@@ -44,7 +43,7 @@ function SignIn() {
         onChange={handleChange}
         name={"email"}
         value={isLogin.email}
-        placeholder={"Email"}
+        placeholder={"Type your email"}
         label={"Email"}
       />
       <Input
@@ -63,6 +62,6 @@ function SignIn() {
       </Button>
     </form>
   );
-}
+};
 
-export default SignIn;
+export default SignInAdmin;

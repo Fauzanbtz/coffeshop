@@ -8,35 +8,43 @@ import NavbarLayout from "../components/layout/navbarLayout";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import AdminLogin from "./adminLogin";
+import AdminMain from "./AdminMain";
 
 const AppContent = () => {
   const location = useLocation();
   const path = location.pathname;
-  const hideNavbar = ["/login", "/register"].includes(path);
+  const hideNavbar = [
+    "/login",
+    "/register",
+    "/admin-login",
+    "/admin-main",
+  ].includes(path);
   useEffect(() => {
     Aos.init({
-        duration: 500
+      duration: 500,
     });
-  },[])
+  }, []);
   return (
     <>
-    <div className="flex justify-center overflow-hidden bg-Brown-100">
-      <div className="flex w-full  flex-col max-w-7xl items-center">
-        {!hideNavbar && <NavbarLayout />}
+      <div className="flex justify-center overflow-hidden bg-Brown-100">
+        <div className="flex w-full  flex-col max-w-7xl items-center">
+          {!hideNavbar && <NavbarLayout />}
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/detail/:id" element={<Detail />} />
+          </Routes>
+        </div>
+      </div>
+      <div>
         <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/detail/:id" element={<Detail />} />
-        
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin-main" element={<AdminMain />} />
         </Routes>
       </div>
-    </div>
-    <div>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-    </div>
     </>
   );
 };
